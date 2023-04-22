@@ -18,6 +18,10 @@ menu_markup = ReplyKeyboardMarkup(resize_keyboard=True)
 media_button = KeyboardButton('Медиа')
 menu_markup.add(media_button)
 
+# Функция для обработки команды /start
+@dp.message_handler(commands=['start'])
+async def start_command(message: types.Message):
+    await message.answer("Привет! Это функция для работы с медиафайлами. Нажми на кнопку 'Медиа', чтобы начать.", reply_markup=menu_markup)
 
 gauth = GoogleAuth()
 gauth.DEFAULT_SETTINGS['client_config_file'] = os.path.join(os.path.dirname(__file__), 'client_secret.json')
